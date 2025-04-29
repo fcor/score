@@ -85,6 +85,7 @@ function App() {
 
   return (
     <div className="container column">
+    <h1 className="title">Área de Candela</h1>
       <div className="score-card">
         <div className="score-top row">
           <div className="score-time row">
@@ -93,7 +94,7 @@ function App() {
           </div>
           {isPlaying && (
             <p className="live-indicator">
-              Live <span>🔴</span>{" "}
+              En Vivo <span>⚪️</span>{" "}
             </p>
           )}
         </div>

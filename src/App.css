@@ -41,7 +41,24 @@ body {
   height: 100vh;
   align-items: center;
   justify-content: center;
+  background-image: url('./assets/Fondo_1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
+
+h1 {
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.title {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
 
 .score-card {
   width: 620px;
@@ -49,7 +66,7 @@ body {
   border-radius: 12px;
   background-color: var(--black);
   overflow: hidden;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 .score-top {
@@ -75,14 +92,17 @@ body {
 }
 
 .live-indicator {
-  color: var(--red);
+  color: white;
   font-size: 14px;
   font-weight: 600;
+  padding: 2px 6px;
+  background-color: var(--red);
+  border-radius: 4px;
 }
 
 @keyframes pulse {
   0% {
-    transform: scale(0.8);
+    transform: scale(0.7);
     opacity: 1;
   }
   50% {
@@ -90,7 +110,7 @@ body {
     opacity: 0.9;
   }
   100% {
-    transform: scale(0.8);
+    transform: scale(0.7);
     opacity: 1;
   }
 }
@@ -98,7 +118,7 @@ body {
 .live-indicator span {
   display: inline-block;
   margin-left: 4px;
-  animation: pulse 1.5s ease-in-out infinite;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .score-main {
