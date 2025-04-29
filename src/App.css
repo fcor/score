@@ -1,42 +1,140 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  --black: #1f2228;
+  --gray: #37393e;
+  --red: #ef4444;
+  --white-bg: #fbfaff;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/Inter.ttf") format("truetype");
+  font-weight: 100 900; 
+  font-style: normal; /* O también puede ser: normal italic si soporta ambos */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter";
+  background-color: var(--white-bg);
+  color: white;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-card {
+  width: 620px;
+  height: 240px;
+  border-radius: 12px;
+  background-color: var(--black);
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.score-top {
+  justify-content: space-between;
+  background-color: var(--gray);
+  padding: 8px 24px;
+  align-items: center;
+  height: 40px;
+}
+
+.score-time {
+  gap: 24px;
+}
+
+.period {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.time {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.live-indicator {
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 1;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.live-indicator span {
+  display: inline-block;
+  margin-left: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
-.card {
-  padding: 2em;
+.score-main {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  height: 200px;
 }
 
-.read-the-docs {
-  color: #888;
+.team {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.team > img {
+  width: 96px;
+}
+
+.team-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.score-number {
+  font-size: 36px;
+  width: 64px;
+  height: 64px;
+  background-color: var(--gray);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colon {
+  font-size: 36px;
 }
