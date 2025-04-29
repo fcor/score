@@ -1,12 +1,33 @@
-# React + Vite
+<h1 align="center">Live Score widget</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Local development
 
-Currently, two official plugins are available:
+Follow this instructions to run this project on your local machine.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
+To run this project all you need is node.js. 
 
-## Expanding the ESLint configuration
+```sh
+$ node --version
+v16.3.2
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#### Installation / Setup
+```sh
+$ git clone https://github.com/fcor/score.git # Clone the repository.
+
+$ cd score # Navigate into the folder
+
+```
+
+#### Running / Development
+```sh
+$ npm run dev # Start the local development server
+```
+
+#### Build / Deploy
+```sh
+$ npm run build # Production files will be on ./dist
+```
+
+
