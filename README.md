@@ -18,6 +18,8 @@ $ git clone https://github.com/fcor/score.git # Clone the repository.
 
 $ cd score # Navigate into the folder
 
+$ npm i # Install dependencies
+
 ```
 
 #### Running / Development
