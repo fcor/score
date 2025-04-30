@@ -9,7 +9,7 @@ function App() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [matchPeriod, setMatchPeriod] = useState("Primer Tiempo");
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     let interval = null;
@@ -57,6 +57,12 @@ function App() {
         case "a": // 'a' to increment away score
           setAwayScore((prev) => prev + 1);
           break;
+        case "n": // 'h' to decrement home score
+          setHomeScore((prev) => Math.max(0, prev - 1));
+          break;
+        case "z": // 'a' to decrement away score
+          setAwayScore((prev) => Math.max(0, prev - 1));
+          break;
         case "r": // 'r' to reset
           setMinutes(0);
           setSeconds(0);
@@ -85,7 +91,7 @@ function App() {
 
   return (
     <div className="container column">
-    <h1 className="title">Área de Candela</h1>
+      <h1 className="title">Área de Candela</h1>
       <div className="score-card">
         <div className="score-top row">
           <div className="score-time row">
