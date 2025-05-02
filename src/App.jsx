@@ -8,7 +8,7 @@ function App() {
   const [awayScore, setAwayScore] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const [matchPeriod, setMatchPeriod] = useState("Primer Tiempo");
+  const [matchPeriod, setMatchPeriod] = useState("Primer tiempo");
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -16,30 +16,20 @@ function App() {
 
     if (isPlaying) {
       interval = setInterval(() => {
-        setSeconds((prevSeconds) => {
-          if (prevSeconds === 59) {
-            setMinutes((prevMinutes) => {
-              if (prevMinutes === 45 && matchPeriod === "Primer tiempo") {
-                setIsPlaying(false);
-                setMatchPeriod("Descanso");
-                return prevMinutes;
-              } else if (prevMinutes === 45 && matchPeriod === "Segundo tiempo") {
-                setIsPlaying(false);
-                setMatchPeriod("Terminado");
-                return prevMinutes;
-              }
-              return prevMinutes + 1;
-            });
-            return 0;
-          }
-          return prevSeconds + 1;
-        });
+        // Update both seconds and minutes in a single tick
+        if (seconds === 59) {
+          setSeconds(0);
+          setMinutes(minutes + 1);
+        } else {
+          setSeconds(seconds + 1);
+        }
       }, 1000);
     }
+
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [isPlaying, matchPeriod]);
+  }, [isPlaying, matchPeriod, seconds, minutes]);
 
   const formatTime = (mins, secs) => {
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
@@ -48,39 +38,51 @@ function App() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       switch (e.key) {
-        case " ": // Space to toggle play/pause
+        case " ": 
           setIsPlaying((prev) => !prev);
           break;
-        case "h": // 'h' to increment home score
+        case "h": 
           setHomeScore((prev) => prev + 1);
           break;
-        case "a": // 'a' to increment away score
+        case "a": 
           setAwayScore((prev) => prev + 1);
           break;
-        case "n": // 'h' to decrement home score
+        case "n": 
           setHomeScore((prev) => Math.max(0, prev - 1));
           break;
-        case "z": // 'a' to decrement away score
+        case "z": 
           setAwayScore((prev) => Math.max(0, prev - 1));
           break;
-        case "r": // 'r' to reset
+        case "r":
           setMinutes(0);
           setSeconds(0);
           setHomeScore(0);
           setAwayScore(0);
           setMatchPeriod("Primer tiempo");
           break;
-        case "2": // '2' to start second half
+        case "1": 
+          setMinutes(0);
+          setSeconds(0);
+          setMatchPeriod("Primer tiempo");
+          setIsPlaying(true);
+          break;
+        case "2": 
           setMinutes(0);
           setSeconds(0);
           setMatchPeriod("Segundo tiempo");
           setIsPlaying(true);
           break;
-        case "d": // '2' to start second half
+        case "d": 
           setMinutes(0);
           setSeconds(0);
           setMatchPeriod("Descanso");
           setIsPlaying(true);
+          break;
+        case "t":
+          setMinutes(90);
+          setSeconds(0);
+          setMatchPeriod("Terminado");
+          setIsPlaying(false);
           break;
       }
     };
